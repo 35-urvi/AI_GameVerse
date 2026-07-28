@@ -1,16 +1,35 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
+import MainLayout from "./components/layout/MainLayout";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Games from "./pages/Games/Games";
+import Leaderboard from "./pages/Leaderboard/Leaderboard";
+import Statistics from "./pages/Statistics/Statistics";
+import SavedGames from "./pages/SavedGames/SavedGames";
+import Settings from "./pages/Settings/Settings";
+import TicTacToe from "@/pages/Games/TicTacToe/TicTacToe";
 
 function App() {
   return (
-    <div className="flex h-screen items-center justify-center bg-slate-900">
-      <h1 className="text-5xl font-bold text-cyan-400">
-        AI Game Arena
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route
+            path="/"
+            element={<Navigate to="/dashboard" replace />}
+          />
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/games" element={<Games />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/saved-games" element={<SavedGames />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/games/tic-tac-toe" element={<TicTacToe />}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
