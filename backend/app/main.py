@@ -9,6 +9,14 @@ from app.api.connect_four import (
     router as connect_four_router,
 )
 
+from app.api.eight_puzzle import (
+    router as eight_puzzle,
+)
+
+from app.api.water_jug import (
+    router as water_jug,
+)
+
 
 app = FastAPI(
     title="AI GameVerse API",
@@ -41,6 +49,14 @@ app.include_router(
 
 app.include_router(
     connect_four_router
+)
+
+app.include_router(
+    eight_puzzle
+)
+
+app.include_router(
+    water_jug
 )
 
 

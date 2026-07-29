@@ -202,6 +202,16 @@ function Games() {
                     "/games/connect-four",
                     );
                 }
+                if (game.id === "8-puzzle") {
+                    navigate(
+                    "/games/8-puzzle",
+                    );
+                }
+                if (game.id === "water-jug") {
+                    navigate(
+                    "/games/water-jug",
+                    );
+                }
             }}
             />
           ))}
