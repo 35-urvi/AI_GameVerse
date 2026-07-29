@@ -9,6 +9,7 @@ import Statistics from "./pages/Statistics/Statistics";
 import SavedGames from "./pages/SavedGames/SavedGames";
 import Settings from "./pages/Settings/Settings";
 import TicTacToe from "@/pages/Games/TicTacToe/TicTacToe";
+import ConnectFourPage from "@/pages/Games/ConnectFour/ConnectFourPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/saved-games" element={<SavedGames />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/games/tic-tac-toe" element={<TicTacToe />}/>
+          <Route path="/games/connect-four" element={<ConnectFourPage />}/>
         </Route>
       </Routes>
     </BrowserRouter>

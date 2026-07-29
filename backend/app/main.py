@@ -5,6 +5,10 @@ from app.api.tic_tac_toe import (
     router as tic_tac_toe_router,
 )
 
+from app.api.connect_four import (
+    router as connect_four_router,
+)
+
 
 app = FastAPI(
     title="AI GameVerse API",
@@ -33,6 +37,10 @@ app.add_middleware(
 
 app.include_router(
     tic_tac_toe_router
+)
+
+app.include_router(
+    connect_four_router
 )
 
 

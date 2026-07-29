@@ -197,6 +197,11 @@ function Games() {
                     "/games/tic-tac-toe",
                     );
                 }
+                if (game.id === "connect-four") {
+                    navigate(
+                    "/games/connect-four",
+                    );
+                }
             }}
             />
           ))}
