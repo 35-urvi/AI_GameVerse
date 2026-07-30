@@ -2,12 +2,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import MainLayout from "./components/layout/MainLayout";
 
-import Dashboard from "./pages/Dashboard/Dashboard";
 import Games from "./pages/Games/Games";
-import Leaderboard from "./pages/Leaderboard/Leaderboard";
-import Statistics from "./pages/Statistics/Statistics";
-import SavedGames from "./pages/SavedGames/SavedGames";
-import Settings from "./pages/Settings/Settings";
+import GamePlaceholder from "./pages/Games/GamePlaceholder";
 import TicTacToe from "@/pages/Games/TicTacToe/TicTacToe";
 import ConnectFourPage from "@/pages/Games/ConnectFour/ConnectFourPage";
 import EightPuzzle from "@/pages/Games/EightPuzzle/EightPuzzle";
@@ -20,23 +16,20 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route
-            path="/"
-            element={<Navigate to="/dashboard" replace />}
-          />
+          <Route path="/" element={<Navigate to="/games" replace />} />
+          <Route path="/dashboard" element={<Navigate to="/games" replace />} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/games" element={<Games />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/statistics" element={<Statistics />} />
-          <Route path="/saved-games" element={<SavedGames />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/games/tic-tac-toe" element={<TicTacToe />}/>
-          <Route path="/games/connect-four" element={<ConnectFourPage />}/>
-          <Route path="/games/8-puzzle" element={<EightPuzzle />}/>
-          <Route path="/games/water-jug" element={<WaterJug />}/>
-          <Route path="/games/wumpus-world" element={<WumpusWorld />}/>
-          <Route path="/games/block-world" element={<BlockWorld />}/>
+          <Route path="/games/tic-tac-toe" element={<TicTacToe />} />
+          <Route path="/games/connect-four" element={<ConnectFourPage />} />
+          <Route path="/games/8-puzzle" element={<EightPuzzle />} />
+          <Route path="/games/water-jug" element={<WaterJug />} />
+          <Route path="/games/wumpus-world" element={<WumpusWorld />} />
+          <Route path="/games/block-world" element={<BlockWorld />} />
+
+          {/* Catch-all game route for any game card */}
+          <Route path="/games/:gameId" element={<GamePlaceholder />} />
+          <Route path="*" element={<Navigate to="/games" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

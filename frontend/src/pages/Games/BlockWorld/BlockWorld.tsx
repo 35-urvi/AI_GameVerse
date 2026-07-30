@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Brain, Dices, RotateCcw, Sparkles, Timer, Layers } from "lucide-react";
+import { Brain, Dices, RotateCcw, Sparkles, Timer, Layers, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -162,7 +163,17 @@ export default function BlockWorld() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl space-y-8">
+    <div className="mx-auto max-w-5xl space-y-6">
+      {/* Back Button */}
+      {/* <div>
+        <Link to="/games">
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-foreground">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Games Arena
+          </Button>
+        </Link>
+      </div> */}
+
       {/* Header */}
       <div>
         <div className="flex items-center gap-3">
@@ -226,7 +237,7 @@ export default function BlockWorld() {
             </div>
 
             {/* AI Algorithm Info */}
-            <div className="rounded-lg border bg-muted/30 p-4">
+            {/* <div className="rounded-lg border bg-muted/30 p-4">
               <div className="flex items-center gap-2">
                 <Brain className="h-5 w-5 text-primary" />
                 <span className="font-semibold">Goal Stack Planning</span>
@@ -234,7 +245,7 @@ export default function BlockWorld() {
               <p className="mt-2 text-sm text-muted-foreground">
                 AI decomposes complex block goals into subgoals using STRIPS operators and a goal stack.
               </p>
-            </div>
+            </div> */}
 
             {/* New Problem */}
             <Button

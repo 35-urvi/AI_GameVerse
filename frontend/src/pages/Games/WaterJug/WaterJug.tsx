@@ -589,7 +589,7 @@ function WaterJug() {
 
 
             {/* Algorithm */}
-            <div className="rounded-lg border bg-muted/30 p-4">
+            {/* <div className="rounded-lg border bg-muted/30 p-4">
 
               <div className="flex items-center gap-2">
 
@@ -611,7 +611,7 @@ function WaterJug() {
 
               </p>
 
-            </div>
+            </div> */}
 
             <Button
                 variant="outline"

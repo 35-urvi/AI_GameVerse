@@ -1,174 +1,126 @@
 import { useState } from "react";
 import {
-  Bell,
-  ChevronDown,
+  Gamepad2,
   Moon,
   Search,
+  Sparkles,
   Sun,
+  Layers,
 } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
-import { Menu } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
-interface NavbarProps {
-  onMenuClick: () => void;
-}
-
-function Navbar({ onMenuClick }: NavbarProps) {
+function Navbar() {
   const { theme, setTheme } = useTheme();
-
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  return (
-    <header className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-background/80 px-4 backdrop-blur-xl md:px-6">
-      {/* Left */}
-      {/* <div className="flex items-center gap-4">
-        <div className="hidden md:block">
-          <h2 className="text-sm font-medium text-muted-foreground">
-            AI Gaming Platform
-          </h2>
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/games?search=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
 
-          <p className="text-xs text-muted-foreground/70">
-            Challenge. Think. Win.
+  return (
+    <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-border/50 bg-background/80 px-4 backdrop-blur-xl md:px-8">
+      {/* Brand Logo & Title */}
+      <Link to="/games" className="group flex items-center gap-3 transition-transform hover:scale-[1.01]">
+        {/* <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-primary via-purple-600 to-indigo-500 shadow-md shadow-primary/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/30">
+          <Gamepad2 className="h-5 w-5 text-white" />
+        </div> */}
+
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="bg-gradient-to-r from-primary via-purple-500 to-indigo-500 bg-clip-text text-lg font-extrabold tracking-tight text-transparent">
+              AI GameVerse
+            </h1>
+            {/* <Badge variant="outline" className="hidden sm:inline-flex border-primary/30 bg-primary/10 text-[10px] text-primary">
+              <Sparkles className="mr-1 h-2.5 w-2.5" />
+              Arena
+            </Badge> */}
+          </div>
+          <p className="text-[11px] text-muted-foreground/80 font-medium">
+            AI Algorithm & Problem Solving Hub
           </p>
         </div>
-      </div> */}
-      <div className="flex items-center gap-3">
-  <Button
-    variant="ghost"
-    size="icon"
-    className="md:hidden"
-    onClick={onMenuClick}
-    aria-label="Open menu"
-  >
-    <Menu className="h-5 w-5" />
-  </Button>
+      </Link>
 
-  <div>
-    <h2 className="text-sm font-medium text-muted-foreground">
-      AI Gaming Platform
-    </h2>
-
-    <p className="text-xs text-muted-foreground/70">
-      Challenge. Think. Win.
-    </p>
-  </div>
-</div>
-
-      {/* Right */}
-      <div className="flex items-center gap-1 md:gap-2">
+      {/* Right Controls */}
+      <div className="flex items-center gap-2 sm:gap-3">
         {/* Search */}
-        {searchOpen && (
-          <div className="hidden w-56 sm:block">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-
-              <Input
-                placeholder="Search games..."
-                className="pl-9"
-                autoFocus
-              />
-            </div>
-          </div>
-        )}
+        <form onSubmit={handleSearchSubmit} className="relative hidden sm:block w-48 md:w-64">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search AI games..."
+            className="h-9 pl-9 pr-3 text-xs bg-muted/40 border-border/60 focus-visible:ring-primary/40 rounded-full"
+          />
+        </form>
 
         <Button
           variant="ghost"
           size="icon"
+          className="sm:hidden h-9 w-9 rounded-full"
           onClick={() => setSearchOpen(!searchOpen)}
           aria-label="Search"
         >
-          <Search className="h-5 w-5" />
+          <Search className="h-4 w-4" />
         </Button>
 
-        {/* Theme */}
+        {/* Quick Games Counter */}
+        <Link to="/games">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden md:inline-flex gap-1.5 h-9 rounded-full border-primary/20 bg-primary/5 hover:bg-primary/10 text-xs font-semibold text-primary"
+          >
+            <Layers className="h-3.5 w-3.5" />
+            Games Catalog
+          </Button>
+        </Link>
+
+        {/* Theme Toggle */}
         <Button
           variant="ghost"
           size="icon"
           onClick={toggleTheme}
+          className="h-9 w-9 rounded-full transition-transform hover:rotate-12"
           aria-label="Toggle theme"
         >
           {theme === "dark" ? (
-            <Sun className="h-5 w-5" />
+            <Sun className="h-4 w-4 text-amber-400" />
           ) : (
-            <Moon className="h-5 w-5" />
+            <Moon className="h-4 w-4 text-slate-700" />
           )}
         </Button>
-
-        {/* Notifications */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="relative"
-          aria-label="Notifications"
-        >
-          <Bell className="h-5 w-5" />
-
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-primary" />
-        </Button>
-
-        {/* Profile */}
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button
-              variant="ghost"
-              className="ml-1 flex items-center gap-2 px-2"
-            >
-              <Avatar className="h-8 w-8">
-                <AvatarFallback>
-                  G
-                </AvatarFallback>
-              </Avatar>
-
-              <div className="hidden text-left md:block">
-                <p className="text-sm font-medium">
-                  Guest Player
-                </p>
-
-                <p className="text-xs text-muted-foreground">
-                  Player
-                </p>
-              </div>
-
-              <ChevronDown className="hidden h-4 w-4 md:block" />
-            </Button>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuItem>
-              Profile
-            </DropdownMenuItem>
-
-            <DropdownMenuItem>
-              My Statistics
-            </DropdownMenuItem>
-
-            <DropdownMenuItem>
-              Saved Games
-            </DropdownMenuItem>
-
-            <DropdownMenuSeparator />
-
-            <DropdownMenuItem>
-              Settings
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
+
+      {/* Mobile Search Input expansion */}
+      {searchOpen && (
+        <div className="absolute inset-x-0 top-16 z-50 border-b bg-background p-3 shadow-md sm:hidden">
+          <form onSubmit={handleSearchSubmit} className="relative">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search games & algorithms..."
+              className="pl-9 pr-3 text-xs rounded-full"
+              autoFocus
+            />
+          </form>
+        </div>
+      )}
     </header>
   );
 }

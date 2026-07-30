@@ -5,12 +5,10 @@ import {
   Save,
   Settings,
   Trophy,
-  X,
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,

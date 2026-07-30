@@ -651,7 +651,7 @@ function WumpusWorld() {
             )}
 
             {/* AI Algorithm Box */}
-            <div className="rounded-lg border bg-muted/30 p-4">
+            {/* <div className="rounded-lg border bg-muted/30 p-4">
               <div className="flex items-center gap-2">
                 <Brain className="h-5 w-5" />
                 <span className="font-semibold">
@@ -661,7 +661,7 @@ function WumpusWorld() {
               <p className="mt-2 text-sm text-muted-foreground">
                 AI uses Breadth-First Search to navigate safely to the gold and return to the entrance.
               </p>
-            </div>
+            </div> */}
 
             {/* New Game */}
             <Button

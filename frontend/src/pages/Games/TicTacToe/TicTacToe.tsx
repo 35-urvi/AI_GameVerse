@@ -61,10 +61,6 @@ function TicTacToe() {
   const isGameOver =
     winner !== null || isDraw;
 
-  const isHumanTurn =
-    gameMode === "human-human" ||
-    currentPlayer === "X";
-
   const [difficulty, setDifficulty] = useState<Difficulty>("hard");
 
   const handleAIMove = async (
