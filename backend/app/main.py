@@ -17,6 +17,14 @@ from app.api.water_jug import (
     router as water_jug,
 )
 
+from app.api.wumpus_world import (
+    router as wumpus_world,
+)
+
+from app.api.block_world import (
+    router as block_world,
+)
+
 
 app = FastAPI(
     title="AI GameVerse API",
@@ -57,6 +65,14 @@ app.include_router(
 
 app.include_router(
     water_jug
+)
+
+app.include_router(
+    wumpus_world
+)
+
+app.include_router(
+    block_world
 )
 
 

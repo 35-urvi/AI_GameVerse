@@ -212,6 +212,16 @@ function Games() {
                     "/games/water-jug",
                     );
                 }
+                if (game.id === "wumpus-world") {
+                  navigate(
+                    "/games/wumpus-world",
+                  );
+                }
+                if (game.id === "block-world") {
+                  navigate(
+                    "/games/block-world",
+                  );
+                }
             }}
             />
           ))}

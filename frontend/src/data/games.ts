@@ -120,4 +120,16 @@ export const games: Game[] = [
     modes: ["AI vs AI"],
     category: "Search",
   },
+
+  {
+    id: "block-world",
+    title: "Block World",
+    description:
+      "Rearrange blocks to match the target configuration using Goal Stack Planning.",
+    icon: "📦",
+    algorithms: ["Goal Stack Planning", "STRIPS"],
+    difficulty: "Medium",
+    modes: ["AI vs Human", "AI vs AI"],
+    category: "Search",
+  },
 ];

@@ -12,6 +12,8 @@ import TicTacToe from "@/pages/Games/TicTacToe/TicTacToe";
 import ConnectFourPage from "@/pages/Games/ConnectFour/ConnectFourPage";
 import EightPuzzle from "@/pages/Games/EightPuzzle/EightPuzzle";
 import WaterJug from "@/pages/Games/WaterJug/WaterJug";
+import WumpusWorld from "@/pages/Games/WumpusWorld/WumpusWorld";
+import BlockWorld from "@/pages/Games/BlockWorld/BlockWorld";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path="/games/connect-four" element={<ConnectFourPage />}/>
           <Route path="/games/8-puzzle" element={<EightPuzzle />}/>
           <Route path="/games/water-jug" element={<WaterJug />}/>
+          <Route path="/games/wumpus-world" element={<WumpusWorld />}/>
+          <Route path="/games/block-world" element={<BlockWorld />}/>
         </Route>
       </Routes>
     </BrowserRouter>
